@@ -8,6 +8,13 @@ public class MovimientoDinero {
     private int tiempoAnual;
     private double tasaInteres;
 
+    private int[] gastosFijos = {4000000, 1000000, 500000}
+
+    private int[] listaDeCompras = new int[];
+    for (int i = 0; i < 100; i++){
+        listaDeCompras[i] = " ";
+    }
+
     
 //------------------info---------------------------------------//   
 //MONTO= VF = flujo netos de caja: Cantidad de dinero que se tiene que pagar o que se recibe al finalizar el plazo pactado
@@ -33,7 +40,7 @@ public class MovimientoDinero {
     public void pagar(String[] cuenta ) {
         int total = 0;
 
-        for (i = 0; i < cuenta.size ; i++){
+        for (int i = 0; i < cuenta.size ; i++){
             if (cuenta.equalsIgnoreCase ("Zapatos deportivos")){
                 total += 200000;
             }
@@ -43,7 +50,27 @@ public class MovimientoDinero {
             if (cuenta.equalsIgnoreCase ("Zapatos elegantes")){
                 total += 250000;
             }
+            return total;
+
+            for (int i = 0; i < 100; i++){
+                if (" ".equals(listaDeCompras[i])) {
+                    listaDeCompras[i] = total;
+                    break;
+            }
         }
+
+            public void CalculoGanancias (int total){
+                int totalPositivo = 0;
+                int totalNegativo = 0;
+                for (int i = 0; i < listaDeCompras.length; i++){
+                    totalPositivo = totalPositivo + listaDeCompras[i];
+                }
+                // Total Negativo:
+                for (int i = 0; i < gastosFijos.length; i++){
+                    totalNegativo = totalNegativo + gastosFijos[i];
+                }
+            }
+
         switch (getConcepto()) {
             case "concepto efectivo mensual ":
                 this.monto = getCapital() * Math.pow(1 + getTasaInteres() , getTiempoAnual()*12);
