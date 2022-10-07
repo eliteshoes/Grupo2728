@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!--  <link href="styles.css" rel="stylesheet"> -->
+
+    <title>Document</title>
+</head>
+<body>
+<!--Hola mundo !-->
+<!--
+<div>
+    <h1>Titulo tamaño 1</h1>
+    <h2>Titulo tamaño 2</h2>
+    <h3>Titulo tamaño 3</h3>
+    <h4>Titulo tamaño 4</h4>
+    <h5>Titulo tamaño 5</h5>
+    <h6>Titulo tamaño 6</h6>
+</div>
+
+
+<p>2022-09-21 11:55:15.988  INFO 52780 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]</p>
+
+<span> Hola mundo, esto es un index </span>
+
+<a href="https://lms.misiontic2022udea.com/login/index.php"> Esto es un enlace al LMS de la UdeA</a>
+
+<div>
+    <form>
+       input son campos de texto
+        <input type="text"/>
+        <input type="number" />
+        <input type="date"/>
+        <input type="file"/>
+        <input placeholder="Este es un mensaje de ayuda" type="text"/>
+        <button class="btn-ejemplo"> Esto es un boton </button>
+    </form>
+</div>
+-->
+<main>
+
+    <div class="row align-items-center" >
+        <div sec:authorize="isAuthenticated()">
+            <h5 th:text="Bienvenido + ${usuario.getEmail()}" align="right"></h5>
+
+        </div>
+
+    </div>
+    <div class="px-4 py-4 mx-5 my-5 text-center">
+        <img src="img/zapatosElite.png" class="d-block mx-auto mb-2" height="300" alt="EliteShoes"/>
+        <h1 class=""display-5 fw-bold>Elite Shoes!</h1>
+        <div class="col-lg-6-auto">
+            <p>Lo mejor en calzado a tu alcance</p>
+
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/oauth2/authorization/auth0}" type="button" class="btn btn-primary btn-lg px-5 gap-3">Iniciar sesion</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a href="/empleado" type="button" class="btn btn-primary btn-lg px-5 gap-3">Ir al aplicativo</a>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary btn-lg px-5">Detalles</button>
+        </div>
+
+    </div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</body>
+</html>
